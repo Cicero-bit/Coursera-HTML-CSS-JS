@@ -1,0 +1,187 @@
+cascading syles sheet /css
+
+REGRAS DA ESTRUTURA DE CSS:
+
+p {
+    color: blue;
+}
+
+sendo p = o selector, sendo a tag p o paragrafo e ele vai se aplicar ha todos os <p>, e dentro dos {} é oque vai ser aplicado a essa tag
+
+{
+    a declaração é o comando que está aqui dentro;
+    oque está aqui dentro consiste em 2 coisa por exemplo "color" é a propriedade e blue é o seu valor ;
+}
+
+formato stylesheet = 
+
+p {
+    declaration
+}
+
+h1{
+    declaration
+}
+
+ELEMENTOS, CLASSES, SELCIONADORES DE ID:
+
+p {
+    color: blue;
+}
+
+p é NOME DE ELEMENTO, está sendo selecionado um elemento <p> acima, pega todas as tags <p>
+
+.blue{
+    color: blue;
+}
+
+blue é uma CLASSE, está sendo selecionado uma classe acima, voce tambem pode criar mais de uma class dentro de uma class, assim: .blue.otherclass
+
+classes são chamadas no html, por exemplo:
+
+<p class = "blue"> Eu sou um paragrafo :)</p> = isso tranforma a tag que recebe a class receba a declaração de color = blue
+
+SELECIONADOR DE ID, é chamado ao html por id, e quem o recebe ganha suas atribuições
+
+#name{
+    color: blue;
+}
+
+<div id = "name">Sou uma div :)</div> essa div vai ganhar o color = blue;
+
+Você pode usar mais de um elemento na hora de expecificar o css, por exemplo
+
+div, .blue{
+    color:blueviolet; oque acontece aqui é que eu estou selecionando a tag <div> e a class blue, e quem tiver a classe e quer for div vai ser alterado
+}
+
+Existe um modo de targetear um elemento com uma class, por exemplo:
+
+Element-class selector:
+
+p.big{
+    font-size: 12px; oque está acontecendo aqui é que toda tag<p> que tiver a expecificação de class = "big" vai receber a declarção contida nesse element-class selector
+}
+
+<p class ="big">BLUE :)</p>
+
+Child selector:
+
+a leitura disso acontece da esquerda para a direita, ou seja, toda tag <p> que é filhade uma tag<article> vai receber os atributos especificados
+
+article > p{
+    color: blue; o
+}
+
+demostração: 
+<article><p>EU VOU SER BLUE :)</p></article>
+
+<p>EU NÂO VOU SER BLUE :(</p>
+
+<article><div><p>EU NÂO VOU SER BLUE :(</div></p></article>
+
+Descendant Selector:
+
+A mesma coisa do de cima, porem, ele não considera como uma criança direta, ou seja, toda tag p que estiver dentro de um article vai receber o conteudo, mesmo estando dentro de outras tags 
+article p{
+    color: blue;
+}
+
+demonstração:
+
+<article><div><p>EU SOU BLUE SIM</p></div></article>
+
+Essa seleções tambem podem ser usada para classes não só elementos, por exemplo:
+
+.colored p{
+    color:blue; toda tag<p> que esstiver dentro de uma tag com a class = "colored" vai receber o atributo aqui dentro(de qualquer nivel)
+}
+ou
+article > .colored{
+    color:blue; todo tag com class = "colored" que for direct child de article vai receber os atributos 
+}
+
+The star selector
+*{
+    color:blue; //isso aqui seta todos os elementos em um doc css, para a color blue, ou seja, todos os elementos no css, html vão receber o seu conteudo
+}
+PSEUDO-CLASS SELECTOR:
+
+Isso aqui targeteia uma chamada dentro de uma tag
+
+selector:pseudo-class{ //selector sendo a classe que você quer alterar
+    content            //pseudo-class sendo uma modificação dessa tag<>, por exemplo a:hover, que é a tag <a> e hover é uma pseudo-class que aplica o hover para o usuario
+}
+
+EXEMPLO: 
+
+No css
+a:link, a:visited{ //oque isso faz é, no link de <a> o texto não vai ter decoração, ou seja, o link não vai ter o underline nele, e visited é depois que a pessoa clica no link
+    text-decoration: none; //esse link vai se tranforma em alguma coisa, essa tranformação está dentro do conteudo dessa função aqui
+}
+a:hover, a:active{
+    color: red; //hover é hover e active e quando você clica mas não solta, e essa declaração de elementos está sendo alterada por essa função aqui, tudo isso está sendo atri
+}//buido a tag<a>;
+
+No html
+<li><a href ="https://site_incrivel.com">Sim isso é um site incrivel haha</a></li>
+
+MORE SELECTORS:
+
+Esse aqui é o :nth-child(n) que pega a nzima criança da tag expecificada e altera somente ele, ex:
+
+header li:nth-child(3){
+    color:blue;  //nesse exemplo, a li dentro de um header, a sua terceira criança vai receber os atributos especificados
+}
+
+section div:nth-child(odd){
+    background-color: aliceblue; //nesse exemplo eu pego todas as div dentro da section, e todas que foram odd, vão receber os atributos ditos, no caso backcolor blue;
+} // div 1,3,5,7,9 vai ficar aliceblue da section
+
+section div:nth-child(4):hover{
+    background-color: red; // aqui é a mesma coisa da de cima, porem, ao passar o mouse na 4 criança de div, ela vai ter um hover, pois é isso que essa função aqui está setando
+} //a div 4 dessa section vai ficar red quando a pessoa passar o mouse
+
+THE BOX MODEL: 
+
+BASIC THING, EXEMPLE:
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: gray;
+  }
+  
+  #box {
+    background-color: blue;
+    padding: 10px;
+    border: 5px solid black;
+    width: 300px;
+    height: 50px;
+    margin-top: 50px;
+    overflow: auto;
+  }
+  #content {
+    background-color: #90EE90; /* green */
+  }
+
+MEDIA QUERRYS:
+
+@media (max-width: 764px){
+    p{
+        color:blue;
+    }
+    
+}
+
+usada para definir coisas para apelhos diferentes, resoluções dififententes, pois sua expecificação recebe pixels, ou seja, caso o max de pixels for 764, executar oque estiver dentro
+
+funcionalidades extras
+
+@media (min-width = 100px;) and (max-width = 1000px;){ // and tambem pode ser substituido por uma ,
+    fazer oque está aqui dentro com tags, ou class ou oque vc quiser
+}
